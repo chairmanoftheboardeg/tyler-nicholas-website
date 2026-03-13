@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Ventures | Tyler Nicholas</title>
+    <link rel="icon" href="https://media.licdn.com/dms/image/v2/D4D03AQGRKh3DGxSABQ/profile-displayphoto-scale_400_400/B4DZr4z1B9GwAg-/0/1765110932319?e=1774483200&v=beta&t=kfbgGyoPquwXygrYf0wrgOBTe-Mu4JydRJcYd3WKm4g" type="image/jpeg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Base Styles & Premium Light Theme Colors */
+        :root {
+            --bg-white: #ffffff;
+            --bg-off-white: #f8fbfc;
+            --campaign-blue: #00AEEF;
+            --black: #111111;
+            --text-dark: #333333;
+            --text-subtitle: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .dot-text, .btn-primary, .btn-secondary, .campaign-banner {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Campaign Banner */
+        .campaign-banner {
+            background-color: var(--black);
+            color: var(--bg-white);
+            text-align: center;
+            padding: 0.8rem 5%;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .campaign-banner a {
+            color: var(--campaign-blue);
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .campaign-banner a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo .dot-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--black);
+        }
+
+        .check {
+            color: var(--campaign-blue);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--campaign-blue);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--black);
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--campaign-blue);
+            color: var(--bg-white);
+            border: 2px solid var(--campaign-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--campaign-blue);
+        }
+
+        /* Projects Header */
+        .projects-header {
+            padding: 5rem 5% 2rem 5%;
+            text-align: center;
+            background-color: var(--bg-white);
+        }
+
+        .projects-header h1 {
+            font-size: 3.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .projects-header p {
+            font-size: 1.2rem;
+            color: var(--text-subtitle);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Projects Grid Layout */
+        .projects-section {
+            padding: 4rem 5% 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: var(--black);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--campaign-blue);
+            display: inline-block;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background-color: var(--bg-white);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--campaign-blue);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--campaign-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .project-role {
+            font-size: 0.9rem;
+            color: var(--campaign-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .project-card p {
+            color: var(--text-subtitle);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Clean Professional Footer */
+        .site-footer {
+            padding: 3rem 5%;
+            background-color: var(--bg-white);
+            border-top: 1px solid #eaeaea;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-emails {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-emails a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-emails a:hover {
+            color: var(--campaign-blue);
+        }
+
+        .site-footer p {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        /* --- MOBILE RESPONSIVENESS & MENU FIX --- */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-cta {
+                display: none;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                flex-direction: column;
+                padding: 2rem 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                transform: translateY(-150%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .projects-header h1 {
+                font-size: 2.8rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-emails {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="campaign-banner">
+        <p>🗳️ I am running for the 21st Cohort of the Seychelles National Youth Assembly! <a href="https://vote.tyler-nicholas.online" target="_blank">Visit my campaign website &rarr;</a></p>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/" style="text-decoration: none;"><span class="dot-text">Tyler<span class="check">.</span></span></a>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/projects/" class="active">Projects</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+
+        <div class="nav-cta">
+            <a href="mailto:tyler@tylernicholasgroup.com" class="btn-primary">Let's Talk</a>
+        </div>
+    </nav>
+
+    <header class="projects-header">
+        <h1>My Ventures & Projects</h1>
+        <p>From establishing corporate subsidiaries to managing large-scale digital aviation communities, here is a look at the platforms and initiatives I am building.</p>
+    </header>
+
+    <section class="projects-section">
+        
+        <h2 class="category-title">Business & Enterprise</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-building"></i></div>
+                <h3>The Tyler Nicholas Group</h3>
+                <span class="project-role">Co-Founder & Executive</span>
+                <p>The parent organization overseeing a diverse portfolio of digital and corporate ventures. Co-founded alongside Kareem Malhas, the group focuses on scalable innovation, strategic business development, and operational excellence across its various subsidiaries.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Blackwood Digital Services</h3>
+                <span class="project-role">Firm Leader / Subsidiary</span>
+                <p>A specialized firm operating under the Tyler Nicholas Group umbrella. Blackwood Digital Services focuses on delivering robust digital solutions, modern web infrastructure, and technical consulting to support modern brands.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Falcon LTD</h3>
+                <span class="project-role">Executive Management</span>
+                <p>A strategic corporate subsidiary fully owned by the Tyler Nicholas Group. Falcon LTD serves as an operational arm, executing targeted business initiatives and expanding the group's overall commercial footprint.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-paintbrush"></i></div>
+                <h3>Pretty Dazzle</h3>
+                <span class="project-role">Project Collaborator / Supporter</span>
+                <p>A dynamic web project founded by youth innovator Christie Esparon. I actively support and collaborate on the development of the Pretty Dazzle platform, championing youth-led entrepreneurship in the digital space.</p>
+            </div>
+
+        </div>
+
+        <h2 class="category-title">Digital Aviation</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                <h3>Air Seychelles Roblox</h3>
+                <span class="project-role">Community Director</span>
+                <p>Merging my absolute passion for aviation with large-scale digital management, I lead the Air Seychelles virtual community. This involves coordinating flight operations, managing digital staff, and fostering a highly engaged user base.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <h3>Emirates Group Roblox</h3>
+                <span class="project-role">Executive Operator</span>
+                <p>A massive virtual airline ecosystem. Alongside the main Emirates operations, I also help oversee the newly integrated Fly Dubai Roblox subsidiary, ensuring cohesive digital fleet management and operational realism.</p>
+            </div>
+
+        </div>
+
+        <h2 class="category-title">Civic & Community Action</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+                <h3>Tyler Nicholas Foundation</h3>
+                <span class="project-role">Founder</span>
+                <p>The non-profit subsidiary of the Tyler Nicholas Group. The foundation is dedicated to localized community action, providing resources, leadership opportunities, and support systems for the youth of Seychelles.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                <h3>FoodShare Seychelles</h3>
+                <span class="project-role">Community Advocate</span>
+                <p>Active involvement in local welfare initiatives aimed at tackling food insecurity. Through FoodShare Seychelles, I work hands-on to ensure sustainable support reaches the families and communities that need it most across the island.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-emails">
+                <a href="mailto:tyler@tylernicholasgroup.com"><i class="fa-solid fa-envelope"></i> tyler@tylernicholasgroup.com</a>
+                <a href="mailto:tyler.nicholasefs@gmail.com"><i class="fa-solid fa-graduation-cap"></i> tyler.nicholasefs@gmail.com</a>
+            </div>
+            <p>&copy; 2026 Tyler Nicholas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const icon = mobileMenu.querySelector('i');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
