@@ -1,10 +1,11 @@
-/* Base Styles & Syed Balkhi Dark Theme Colors */
+/* Base Styles & Premium Light Theme Colors */
 :root {
-    --bg-dark: #1b1a2f; /* Deep, rich purple-navy */
-    --text-white: #ffffff;
-    --text-gray: #b0b0c0;
-    --accent-gold: #f4d03f; /* The yellow/gold accent from the reference */
-    --nav-bg: #1b1a2f;
+    --bg-white: #ffffff;
+    --campaign-blue: #00AEEF; /* Crisp light blue from image_6.png */
+    --black: #000000;
+    --text-dark: #112233;
+    --text-subtitle: #666666;
+    --text-light: #f4f4f4;
 }
 
 * {
@@ -14,27 +15,36 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-white);
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-white);
+    color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Navigation Bar */
+h2, h3, .dot-text, .btn-primary, .btn-secondary {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navigation Bar (Mirroring image_6.png) */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 4%;
-    background-color: transparent;
+    padding: 1.5rem 5%;
+    background-color: var(--bg-white);
     position: relative;
     z-index: 10;
 }
 
-.logo .nav-signature {
-    height: 40px; /* Scales your e-signature perfectly */
-    filter: brightness(0) invert(1); /* Turns your black signature white for the dark theme */
+.logo .dot-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--black);
+}
+
+.check {
+    color: var(--campaign-blue); /* Light blue dot */
 }
 
 .nav-links {
@@ -44,160 +54,204 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-white);
+    color: var(--black);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: var(--text-gray);
+    color: var(--campaign-blue);
 }
 
-.social-icons {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-icons a {
-    color: var(--text-white);
+/* Base Button Styles */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
     font-size: 1rem;
-    transition: color 0.3s;
+    transition: all 0.3s;
+    text-transform: capitalize;
 }
 
-.social-icons a:hover {
-    color: var(--text-gray);
+.btn-primary {
+    background-color: var(--campaign-blue);
+    color: var(--bg-white);
+    border: 2px solid var(--campaign-blue);
 }
 
-/* Hero Section */
+.btn-primary:hover {
+    background-color: var(--bg-white);
+    color: var(--campaign-blue);
+}
+
+.btn-secondary {
+    background-color: var(--bg-white);
+    color: var(--campaign-blue);
+    border: 2px solid var(--campaign-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--campaign-blue);
+    color: var(--bg-white);
+}
+
+/* Hero Section (Mirroring image_6.png) */
 .hero {
-    min-height: 85vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
-    padding: 0 5%;
-    position: relative;
+    padding: 2rem 5% 0 5%;
+    background-color: var(--bg-white);
 }
 
 .hero-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1400px;
+    justify-content: space-between;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
 .hero-text {
     flex: 1;
-    max-width: 700px;
-    z-index: 2;
+    padding-right: 3rem;
 }
 
-.hero-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
-    line-height: 1.1;
+.hero-text h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+}
+
+.hero-text h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-subtitle);
     margin-bottom: 2rem;
-    font-weight: 700;
 }
 
 .hero-text p {
     font-size: 1.1rem;
-    color: var(--text-gray);
-    margin-bottom: 3rem;
+    color: var(--text-subtitle);
+    margin-bottom: 2.5rem;
     max-width: 600px;
-    line-height: 1.8;
 }
 
-.hero-link {
-    display: inline-block;
-    color: var(--accent-gold);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border-bottom: 1px solid var(--accent-gold);
-    padding-bottom: 5px;
-    transition: opacity 0.3s;
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
 }
 
-.hero-link:hover {
-    opacity: 0.7;
-}
-
-/* Hero Image Blending Effect */
 .hero-image {
     flex: 1;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
-    position: absolute;
-    right: 5%;
-    bottom: 0;
-    height: 90vh;
-    z-index: 1;
+    align-items: center;
 }
 
-.hero-image img {
-    height: 100%;
+.candidate-photo {
+    max-width: 100%;
+    height: auto;
+    max-height: 650px;
     object-fit: contain;
-    /* This creates the faded, color-graded studio look from the reference */
-    mix-blend-mode: luminosity;
-    opacity: 0.6;
-    filter: contrast(1.2);
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Social Directory Section (Bottom Hero, Layout from image_6.png) */
+.hero-bottom {
+    padding: 0rem 5% 5rem 5%;
+}
+
+.hero-bottom-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hero-social-grid {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--bg-white);
+    border: 2px solid var(--campaign-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--campaign-blue);
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-circle:hover {
+    background-color: var(--campaign-blue);
+    color: var(--bg-white);
 }
 
 /* Minimal Footer */
 .site-footer {
     padding: 3rem 5%;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    background-color: #f9f9f9; /* Subtle contrast footer */
+    border-top: 1px solid #e0e0e0;
+}
+
+.site-footer p {
+    color: var(--text-subtitle);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
 }
 
 .footer-emails {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-.footer-emails a {
-    color: var(--text-gray);
-    text-decoration: none;
+    color: var(--text-subtitle);
     font-size: 0.9rem;
     font-family: monospace;
 }
 
-.footer-emails a:hover {
-    color: var(--accent-gold);
-}
-
-.site-footer p {
-    color: rgba(255,255,255,0.3);
-    font-size: 0.8rem;
+.footer-emails a {
+    color: var(--campaign-blue);
+    text-decoration: none;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
     .nav-links {
-        display: none; /* Hides the long menu on smaller screens for now */
+        display: none; /* Long menu hiddden for now */
     }
-    .hero-text h1 {
-        font-size: 3.5rem;
-    }
-    .hero-image {
-        opacity: 0.3; /* Fades image more on small screens so text is readable */
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-text h1 {
+    .hero-text h2 {
         font-size: 2.8rem;
     }
-    .footer-emails {
-        flex-direction: column;
-        gap: 0.5rem;
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .hero-image {
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+    .hero-text {
+        padding-right: 0;
+    }
+    .hero-text p {
+        margin: 0 auto 2.5rem auto;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .hero-bottom-content {
+        justify-content: center;
     }
 }
