@@ -1,11 +1,11 @@
 /* Base Styles & Premium Light Theme Colors */
 :root {
     --bg-white: #ffffff;
-    --campaign-blue: #00AEEF; /* Crisp light blue from image_6.png */
-    --black: #000000;
-    --text-dark: #112233;
+    --bg-off-white: #f8fbfc; /* Subtle grey-blue for depth */
+    --campaign-blue: #00AEEF; /* The crisp light blue you wanted */
+    --black: #111111;
+    --text-dark: #333333;
     --text-subtitle: #666666;
-    --text-light: #f4f4f4;
 }
 
 * {
@@ -16,23 +16,44 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: var(--bg-white);
+    background-color: var(--bg-off-white); /* Prevents the harsh pure white look */
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-h2, h3, .dot-text, .btn-primary, .btn-secondary {
+h2, h3, .dot-text, .btn-primary, .btn-secondary, .campaign-banner {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Navigation Bar (Mirroring image_6.png) */
+/* Campaign Banner */
+.campaign-banner {
+    background-color: var(--black);
+    color: var(--bg-white);
+    text-align: center;
+    padding: 0.8rem 5%;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.campaign-banner a {
+    color: var(--campaign-blue);
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.campaign-banner a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%;
     background-color: var(--bg-white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03); /* Soft shadow to separate from content */
     position: relative;
     z-index: 10;
 }
@@ -44,25 +65,32 @@ h2, h3, .dot-text, .btn-primary, .btn-secondary {
 }
 
 .check {
-    color: var(--campaign-blue); /* Light blue dot */
+    color: var(--campaign-blue);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .nav-links a {
-    color: var(--black);
+    color: var(--text-dark);
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s;
 }
 
 .nav-links a:hover, .nav-links a.active {
     color: var(--campaign-blue);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--black);
+    cursor: pointer;
 }
 
 /* Base Button Styles */
@@ -71,10 +99,9 @@ h2, h3, .dot-text, .btn-primary, .btn-secondary {
     padding: 0.8rem 2rem;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: 6px; /* Slightly rounder buttons */
     font-size: 1rem;
     transition: all 0.3s;
-    text-transform: capitalize;
 }
 
 .btn-primary {
@@ -84,12 +111,12 @@ h2, h3, .dot-text, .btn-primary, .btn-secondary {
 }
 
 .btn-primary:hover {
-    background-color: var(--bg-white);
+    background-color: transparent;
     color: var(--campaign-blue);
 }
 
 .btn-secondary {
-    background-color: var(--bg-white);
+    background-color: transparent;
     color: var(--campaign-blue);
     border: 2px solid var(--campaign-blue);
 }
@@ -99,99 +126,77 @@ h2, h3, .dot-text, .btn-primary, .btn-secondary {
     color: var(--bg-white);
 }
 
-/* Hero Section (Mirroring image_6.png) */
+/* Hero Section */
 .hero {
     min-height: 80vh;
     display: flex;
     align-items: center;
-    padding: 2rem 5% 0 5%;
-    background-color: var(--bg-white);
+    padding: 4rem 5%;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .hero-text {
     flex: 1;
-    padding-right: 3rem;
+    padding-right: 2rem;
 }
 
 .hero-text h2 {
-    font-size: 3.5rem;
-    line-height: 1.2;
+    font-size: 3.8rem;
+    line-height: 1.1;
     font-weight: 800;
     margin-bottom: 0.5rem;
     color: var(--black);
+}
+
+.text-blue {
+    color: var(--campaign-blue);
 }
 
 .hero-text h3 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-subtitle);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero-text p {
     font-size: 1.1rem;
     color: var(--text-subtitle);
     margin-bottom: 2.5rem;
-    max-width: 600px;
+    max-width: 550px;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 3rem;
 }
 
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.candidate-photo {
-    max-width: 100%;
-    height: auto;
-    max-height: 650px;
-    object-fit: contain;
-    display: block;
-    image-rendering: -webkit-optimize-contrast;
-}
-
-/* Social Directory Section (Bottom Hero, Layout from image_6.png) */
-.hero-bottom {
-    padding: 0rem 5% 5rem 5%;
-}
-
-.hero-bottom-content {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: flex-start;
-}
-
+/* Social Directory Grid */
 .hero-social-grid {
     display: flex;
     gap: 1rem;
 }
 
 .social-circle {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background-color: var(--bg-white);
-    border: 2px solid var(--campaign-blue);
+    border: 2px solid rgba(0, 174, 239, 0.3); /* Softer border */
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--campaign-blue);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -199,51 +204,102 @@ h2, h3, .dot-text, .btn-primary, .btn-secondary {
 .social-circle:hover {
     background-color: var(--campaign-blue);
     color: var(--bg-white);
+    border-color: var(--campaign-blue);
+    transform: translateY(-3px);
 }
 
-/* Minimal Footer */
+/* Hero Image & Backdrop Fix */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+}
+
+.image-backdrop {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: var(--campaign-blue);
+    border-radius: 50%;
+    opacity: 0.05; /* Creates a very subtle circle behind you to anchor the image */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.candidate-photo {
+    max-width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.15)); /* Adds a shadow to the chair to ground it */
+}
+
+/* Clean Professional Footer */
 .site-footer {
     padding: 3rem 5%;
-    text-align: center;
-    background-color: #f9f9f9; /* Subtle contrast footer */
-    border-top: 1px solid #e0e0e0;
+    background-color: var(--bg-white);
+    border-top: 1px solid #eaeaea;
 }
 
-.site-footer p {
-    color: var(--text-subtitle);
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .footer-emails {
-    color: var(--text-subtitle);
-    font-size: 0.9rem;
-    font-family: monospace;
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
 }
 
 .footer-emails a {
-    color: var(--campaign-blue);
+    color: var(--text-dark); /* Removes the default blue link color */
     text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
 }
 
-/* Mobile Responsiveness */
+.footer-emails a:hover {
+    color: var(--campaign-blue);
+}
+
+.site-footer p {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+/* --- MOBILE RESPONSIVENESS FIXES --- */
 @media (max-width: 1024px) {
     .nav-links {
-        display: none; /* Long menu hiddden for now */
+        display: none; /* Hides desktop menu on tablets/phones */
     }
-    .hero-text h2 {
-        font-size: 2.8rem;
+    .menu-toggle {
+        display: block; /* Shows hamburger icon */
+    }
+    .nav-cta {
+        display: none;
     }
     .hero-content {
-        flex-direction: column-reverse;
+        flex-direction: column;
         text-align: center;
-    }
-    .hero-image {
-        justify-content: center;
-        margin-bottom: 3rem;
+        margin-top: 2rem;
     }
     .hero-text {
         padding-right: 0;
+    }
+    .hero-text h2 {
+        font-size: 3rem;
     }
     .hero-text p {
         margin: 0 auto 2.5rem auto;
@@ -251,7 +307,16 @@ h2, h3, .dot-text, .btn-primary, .btn-secondary {
     .hero-buttons {
         justify-content: center;
     }
-    .hero-bottom-content {
+    .hero-social-grid {
         justify-content: center;
+        margin-bottom: 3rem;
+    }
+    .image-backdrop {
+        width: 300px;
+        height: 300px;
+    }
+    .footer-emails {
+        flex-direction: column;
+        gap: 0.8rem;
     }
 }
