@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Ventures | Tyler Nicholas</title>
+    <title>Projects & Advocacy | Tyler Nicholas</title>
     <link rel="icon" href="https://media.licdn.com/dms/image/v2/D4D03AQGRKh3DGxSABQ/profile-displayphoto-scale_400_400/B4DZr4z1B9GwAg-/0/1765110932319?e=1774483200&v=beta&t=kfbgGyoPquwXygrYf0wrgOBTe-Mu4JydRJcYd3WKm4g" type="image/jpeg">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
             --black: #111111;
             --text-dark: #333333;
             --text-subtitle: #666666;
+            --border-light: #e0e6ed;
         }
 
         * {
@@ -142,31 +143,22 @@
         .projects-header p {
             font-size: 1.2rem;
             color: var(--text-subtitle);
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         /* Projects Grid Layout */
         .projects-section {
-            padding: 4rem 5% 6rem 5%;
+            padding: 4rem 5% 2rem 5%;
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .category-title {
-            font-size: 2rem;
-            color: var(--black);
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--campaign-blue);
-            display: inline-block;
         }
 
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
         }
 
         /* Project Cards */
@@ -177,6 +169,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border-top: 5px solid var(--campaign-blue);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -184,33 +178,137 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
-        .project-icon {
-            font-size: 2.5rem;
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: rgba(0, 174, 239, 0.1);
             color: var(--campaign-blue);
-            margin-bottom: 1.5rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .project-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--black);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             font-weight: 800;
-        }
-
-        .project-role {
-            font-size: 0.9rem;
-            color: var(--campaign-blue);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            display: block;
         }
 
         .project-card p {
             color: var(--text-subtitle);
             font-size: 1.05rem;
             line-height: 1.7;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            font-weight: 600;
+            color: var(--black);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--campaign-blue);
+        }
+
+        /* Advocacy & Humanitarian Section */
+        .advocacy-section {
+            padding: 0 5% 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .advocacy-box {
+            background-color: var(--black);
+            color: var(--bg-white);
+            border-radius: 12px;
+            padding: 4rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advocacy-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 6px; height: 100%;
+            background-color: var(--campaign-blue);
+        }
+
+        .advocacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .advocacy-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--bg-white);
+        }
+
+        .advocacy-header p {
+            font-size: 1.15rem;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .advocacy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .advocacy-item h3 {
+            font-size: 1.3rem;
+            color: var(--campaign-blue);
+            margin-bottom: 1rem;
+        }
+
+        .advocacy-item p {
+            color: #d1d5db;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .org-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 3rem;
+        }
+
+        .org-pill {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--bg-white);
+            background: rgba(255,255,255,0.03);
+            transition: all 0.3s;
+        }
+
+        .org-pill:hover {
+            border-color: var(--campaign-blue);
+            background: rgba(0, 174, 239, 0.1);
         }
 
         /* Clean Professional Footer */
@@ -252,14 +350,10 @@
             font-size: 0.85rem;
         }
 
-        /* --- MOBILE RESPONSIVENESS & MENU FIX --- */
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 1024px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-cta {
-                display: none;
-            }
+            .menu-toggle { display: block; }
+            .nav-cta { display: none; }
             
             .nav-links {
                 position: absolute;
@@ -282,18 +376,10 @@
                 pointer-events: auto;
             }
 
-            .projects-header h1 {
-                font-size: 2.8rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-emails {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
+            .projects-header h1 { font-size: 2.8rem; }
+            .projects-grid, .advocacy-grid { grid-template-columns: 1fr; }
+            .advocacy-box { padding: 2.5rem; }
+            .footer-emails { flex-direction: column; gap: 0.8rem; }
         }
     </style>
 </head>
@@ -326,83 +412,104 @@
     </nav>
 
     <header class="projects-header">
-        <h1>My Ventures & Projects</h1>
-        <p>From establishing corporate subsidiaries to managing large-scale digital aviation communities, here is a look at the platforms and initiatives I am building.</p>
+        <h1>Ventures & Initiatives</h1>
+        <p>A comprehensive portfolio of the digital services, virtual ecosystems, and philanthropic organizations I have built, managed, and supported.</p>
     </header>
 
     <section class="projects-section">
-        
-        <h2 class="category-title">Business & Enterprise</h2>
         <div class="projects-grid">
             
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-building"></i></div>
-                <h3>The Tyler Nicholas Group</h3>
-                <span class="project-role">Co-Founder & Executive</span>
-                <p>The parent organization overseeing a diverse portfolio of digital and corporate ventures. Co-founded alongside Kareem Malhas, the group focuses on scalable innovation, strategic business development, and operational excellence across its various subsidiaries.</p>
-            </div>
-
-            <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                <h3>Blackwood Digital Services</h3>
-                <span class="project-role">Firm Leader / Subsidiary</span>
-                <p>A specialized firm operating under the Tyler Nicholas Group umbrella. Blackwood Digital Services focuses on delivering robust digital solutions, modern web infrastructure, and technical consulting to support modern brands.</p>
-            </div>
-
-            <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Falcon LTD</h3>
-                <span class="project-role">Executive Management</span>
-                <p>A strategic corporate subsidiary fully owned by the Tyler Nicholas Group. Falcon LTD serves as an operational arm, executing targeted business initiatives and expanding the group's overall commercial footprint.</p>
-            </div>
-
-            <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-paintbrush"></i></div>
-                <h3>Pretty Dazzle</h3>
-                <span class="project-role">Project Collaborator / Supporter</span>
-                <p>A dynamic web project founded by youth innovator Christie Esparon. I actively support and collaborate on the development of the Pretty Dazzle platform, championing youth-led entrepreneurship in the digital space.</p>
-            </div>
-
-        </div>
-
-        <h2 class="category-title">Digital Aviation</h2>
-        <div class="projects-grid">
-            
-            <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-plane-departure"></i></div>
-                <h3>Air Seychelles Roblox</h3>
-                <span class="project-role">Community Director</span>
-                <p>Merging my absolute passion for aviation with large-scale digital management, I lead the Air Seychelles virtual community. This involves coordinating flight operations, managing digital staff, and fostering a highly engaged user base.</p>
-            </div>
-
-            <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-earth-americas"></i></div>
-                <h3>Emirates Group Roblox</h3>
-                <span class="project-role">Executive Operator</span>
-                <p>A massive virtual airline ecosystem. Alongside the main Emirates operations, I also help oversee the newly integrated Fly Dubai Roblox subsidiary, ensuring cohesive digital fleet management and operational realism.</p>
-            </div>
-
-        </div>
-
-        <h2 class="category-title">Civic & Community Action</h2>
-        <div class="projects-grid">
-            
-            <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+                <div class="project-tags"><span class="tag">Philanthropy</span></div>
                 <h3>Tyler Nicholas Foundation</h3>
-                <span class="project-role">Founder</span>
-                <p>The non-profit subsidiary of the Tyler Nicholas Group. The foundation is dedicated to localized community action, providing resources, leadership opportunities, and support systems for the youth of Seychelles.</p>
+                <p>The philanthropic arm of TNG, dedicated to community empowerment, educational advancement, and sustainable development initiatives globally and within the Seychelles.</p>
+                <a href="#" class="project-link">Website <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                <div class="project-tags"><span class="tag">Digital Services</span></div>
+                <h3>BlueWave Digital</h3>
+                <p>A premier digital agency specializing in cutting-edge web development, targeted marketing campaigns, and robust IT infrastructure solutions for modern online businesses.</p>
+                <a href="#" class="project-link">Website <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tags"><span class="tag">Philanthropy</span></div>
                 <h3>FoodShare Seychelles</h3>
-                <span class="project-role">Community Advocate</span>
-                <p>Active involvement in local welfare initiatives aimed at tackling food insecurity. Through FoodShare Seychelles, I work hands-on to ensure sustainable support reaches the families and communities that need it most across the island.</p>
+                <p>A vital local initiative focused on enhancing food security and efficient distribution, connecting essential resources to communities in need across the Seychelles.</p>
+                <a href="#" class="project-link">Website <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tags"><span class="tag">Careers</span> <span class="tag">Virtual Aviation</span></div>
+                <h3>Emirates Group Roblox</h3>
+                <p>A leading virtual aviation and corporate simulation experience. Setting the standard for online roleplay communities with structured operations and dedicated training programs.</p>
+                <a href="#" class="project-link">Website <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tags"><span class="tag">Virtual Aviation</span></div>
+                <h3>Air Seychelles Roblox</h3>
+                <p>A highly detailed virtual airline bringing the spirit of the Seychelles to the digital skies. Features comprehensive flight operations, integrated live booking platforms, and real-time flight information.</p>
+                <a href="#" class="project-link">Website <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tags"><span class="tag">E-Commerce</span></div>
+                <h3>Falcon LTD</h3>
+                <p>A digital storefront and specialized service provider offering secure, high-quality digital assets, tools, and infrastructure solutions for creators and developers.</p>
+                <a href="#" class="project-link">Store <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tags"><span class="tag">Virtual Aviation</span></div>
+                <h3>Fly Dubai Roblox</h3>
+                <p>A Subsidiary of The Emirates Group. We set the global standard for online roleplay through high-fidelity operations, institutional training programs, and a commitment to professional excellence.</p>
+                <a href="#" class="project-link">Website <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tags"><span class="tag">Infrastructure</span></div>
+                <h3>Blackwood Digital Services</h3>
+                <p>Providing the elite operational infrastructure required to scale and protect world-class virtual ecosystems. We deliver a comprehensive suite of enterprise solutions.</p>
+                <a href="#" class="project-link">Website <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
         </div>
+    </section>
 
+    <section class="advocacy-section">
+        <div class="advocacy-box">
+            
+            <div class="advocacy-header">
+                <h2>Global Humanitarianism & Civic Duty</h2>
+                <p>Serving my country, advocating for education reform, and devoting efforts toward world peace. At the Tyler Nicholas Group, we believe in using our platform to support those affected by crises worldwide. We are fundamentally for a better world.</p>
+            </div>
+
+            <div class="advocacy-grid">
+                <div class="advocacy-item">
+                    <h3>Corporate Advocacy</h3>
+                    <p>We believe that silence is not an option for global entities. TNG actively utilizes its digital reach, social platforms, and subsidiary networks to amplify the messages of the United Nations, the Red Cross, and allied NGOs during times of acute international crisis.</p>
+                </div>
+                <div class="advocacy-item">
+                    <h3>Direct Support & Matching</h3>
+                    <p>Beyond advocacy, TNG is committed to material impact. We encourage our executives, employees, and global community members to donate to verified humanitarian organizations, and we leverage the Tyler Nicholas Foundation to coordinate regional aid efforts.</p>
+                </div>
+            </div>
+
+            <div class="org-list">
+                <div class="org-pill">ICRC (Red Cross)</div>
+                <div class="org-pill">UN Refugee Agency</div>
+                <div class="org-pill">WFP</div>
+                <div class="org-pill">UNICEF</div>
+                <div class="org-pill">UNRWA</div>
+                <div class="org-pill">OCHA</div>
+                <div class="org-pill">OHCHR</div>
+                <div class="org-pill">UNDP</div>
+                <div class="org-pill">UN Women</div>
+            </div>
+
+        </div>
     </section>
 
     <footer class="site-footer">
