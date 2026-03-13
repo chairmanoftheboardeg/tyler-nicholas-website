@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Directory | Tyler Nicholas</title>
+    <link rel="icon" href="https://media.licdn.com/dms/image/v2/D4D03AQGRKh3DGxSABQ/profile-displayphoto-scale_400_400/B4DZr4z1B9GwAg-/0/1765110932319?e=1774483200&v=beta&t=kfbgGyoPquwXygrYf0wrgOBTe-Mu4JydRJcYd3WKm4g" type="image/jpeg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Base Styles & Premium Light Theme Colors */
+        :root {
+            --bg-white: #ffffff;
+            --bg-off-white: #f8fbfc;
+            --campaign-blue: #00AEEF;
+            --black: #111111;
+            --text-dark: #333333;
+            --text-subtitle: #666666;
+            --border-light: #e0e6ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .dot-text, .btn-primary, .btn-secondary, .campaign-banner {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Campaign Banner */
+        .campaign-banner {
+            background-color: var(--black);
+            color: var(--bg-white);
+            text-align: center;
+            padding: 0.8rem 5%;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .campaign-banner a {
+            color: var(--campaign-blue);
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .campaign-banner a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo .dot-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--black);
+        }
+
+        .check {
+            color: var(--campaign-blue);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--campaign-blue);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--black);
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--campaign-blue);
+            color: var(--bg-white);
+            border: 2px solid var(--campaign-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--campaign-blue);
+        }
+
+        /* Contact Header */
+        .contact-header {
+            padding: 5rem 5% 2rem 5%;
+            text-align: center;
+            background-color: var(--bg-white);
+        }
+
+        .contact-header h1 {
+            font-size: 3.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            color: var(--text-subtitle);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contact & Directory Layout */
+        .contact-section {
+            padding: 4rem 5% 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--black);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        /* Email Intent Cards */
+        .email-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .email-card {
+            background-color: var(--bg-white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .email-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-color: var(--campaign-blue);
+        }
+
+        .email-card i {
+            font-size: 2.5rem;
+            color: var(--campaign-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .email-card h3 {
+            font-size: 1.3rem;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .email-card p {
+            font-size: 0.95rem;
+            color: var(--text-subtitle);
+            margin-bottom: 1.5rem;
+        }
+
+        .email-address {
+            font-weight: 600;
+            color: var(--campaign-blue);
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        /* Social Directory Grid */
+        .social-directory-wrapper {
+            background-color: var(--bg-white);
+            padding: 4rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-light);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .social-tile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            background-color: var(--bg-off-white);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .social-tile:hover {
+            background-color: var(--campaign-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 174, 239, 0.2);
+        }
+
+        .social-tile i {
+            font-size: 2.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-tile span {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .social-tile:hover i, .social-tile:hover span {
+            color: var(--bg-white);
+        }
+
+        /* Clean Professional Footer */
+        .site-footer {
+            padding: 3rem 5%;
+            background-color: var(--bg-white);
+            border-top: 1px solid #eaeaea;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .site-footer p {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        /* --- MOBILE RESPONSIVENESS & MENU FIX --- */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-cta {
+                display: none;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                flex-direction: column;
+                padding: 2rem 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                transform: translateY(-150%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .contact-header h1 {
+                font-size: 2.8rem;
+            }
+
+            .email-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .social-directory-wrapper {
+                padding: 2rem;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Make the last social tile span both columns on mobile to keep it neat */
+            .social-grid .social-tile:last-child {
+                grid-column: span 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="campaign-banner">
+        <p>🗳️ I am running for the 21st Cohort of the Seychelles National Youth Assembly! <a href="https://vote.tyler-nicholas.online" target="_blank">Visit my campaign website &rarr;</a></p>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/" style="text-decoration: none;"><span class="dot-text">Tyler<span class="check">.</span></span></a>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/contact/" class="active">Contact</a></li>
+        </ul>
+
+        <div class="nav-cta">
+            <a href="mailto:tyler@tylernicholasgroup.com" class="btn-primary">Let's Talk</a>
+        </div>
+    </nav>
+
+    <header class="contact-header">
+        <h1>Let's Connect</h1>
+        <p>Whether you want to discuss business ventures, civic initiatives, or simply say hello, choose the channel that fits best below.</p>
+    </header>
+
+    <section class="contact-section">
+        
+        <h2 class="section-title">Direct Inquiries</h2>
+        
+        <div class="email-grid">
+            
+            <a href="mailto:tyler@tylernicholasgroup.com" class="email-card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Business & Enterprise</h3>
+                <p>For inquiries regarding the Tyler Nicholas Group, corporate partnerships, or subsidiary operations.</p>
+                <span class="email-address">tyler@tylernicholasgroup.com</span>
+            </a>
+
+            <a href="mailto:tyler.nicholasefs@gmail.com" class="email-card">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>Academic & EFS</h3>
+                <p>For school-related matters, CVL communications, or academic inquiries at École Française des Seychelles.</p>
+                <span class="email-address">tyler.nicholasefs@gmail.com</span>
+            </a>
+
+            <a href="mailto:tn991557@gmail.com" class="email-card">
+                <i class="fa-solid fa-envelope"></i>
+                <h3>Direct / Civic</h3>
+                <p>For general inquiries, youth advocacy discussions, or non-profit communications.</p>
+                <span class="email-address">tn991557@gmail.com</span>
+            </a>
+
+        </div>
+
+        <div class="social-directory-wrapper">
+            <h2 class="section-title" style="margin-bottom: 2rem;">Social Directory</h2>
+            
+            <div class="social-grid">
+                
+                <a href="https://www.linkedin.com/in/tyler-nicholas-62999534a" target="_blank" class="social-tile">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+
+                <a href="https://x.com/TylerNicholasSC" target="_blank" class="social-tile">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span>X (Twitter)</span>
+                </a>
+
+                <a href="https://www.instagram.com/t.nicholas26" target="_blank" class="social-tile">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+
+                <a href="https://wa.me/qr/HVGZ3S2BPARJL1" target="_blank" class="social-tile">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+
+                <a href="https://www.snapchat.com/add/t.nicholas2008" target="_blank" class="social-tile">
+                    <i class="fa-brands fa-snapchat"></i>
+                    <span>Snapchat</span>
+                </a>
+
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Tyler Nicholas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const icon = mobileMenu.querySelector('i');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
