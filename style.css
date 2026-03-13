@@ -1,0 +1,203 @@
+/* Base Styles & Syed Balkhi Dark Theme Colors */
+:root {
+    --bg-dark: #1b1a2f; /* Deep, rich purple-navy */
+    --text-white: #ffffff;
+    --text-gray: #b0b0c0;
+    --accent-gold: #f4d03f; /* The yellow/gold accent from the reference */
+    --nav-bg: #1b1a2f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4%;
+    background-color: transparent;
+    position: relative;
+    z-index: 10;
+}
+
+.logo .nav-signature {
+    height: 40px; /* Scales your e-signature perfectly */
+    filter: brightness(0) invert(1); /* Turns your black signature white for the dark theme */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-gray);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: var(--text-white);
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--text-gray);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 700px;
+    z-index: 2;
+}
+
+.hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+.hero-link {
+    display: inline-block;
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-bottom: 1px solid var(--accent-gold);
+    padding-bottom: 5px;
+    transition: opacity 0.3s;
+}
+
+.hero-link:hover {
+    opacity: 0.7;
+}
+
+/* Hero Image Blending Effect */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+    height: 90vh;
+    z-index: 1;
+}
+
+.hero-image img {
+    height: 100%;
+    object-fit: contain;
+    /* This creates the faded, color-graded studio look from the reference */
+    mix-blend-mode: luminosity;
+    opacity: 0.6;
+    filter: contrast(1.2);
+}
+
+/* Minimal Footer */
+.site-footer {
+    padding: 3rem 5%;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-emails {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-emails a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: monospace;
+}
+
+.footer-emails a:hover {
+    color: var(--accent-gold);
+}
+
+.site-footer p {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.8rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none; /* Hides the long menu on smaller screens for now */
+    }
+    .hero-text h1 {
+        font-size: 3.5rem;
+    }
+    .hero-image {
+        opacity: 0.3; /* Fades image more on small screens so text is readable */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.8rem;
+    }
+    .footer-emails {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
