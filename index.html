@@ -1,451 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tyler Nicholas | Student, Entrepreneur, Youth Ambassador</title>
-    <link rel="icon" href="https://media.licdn.com/dms/image/v2/D4D03AQGRKh3DGxSABQ/profile-displayphoto-scale_400_400/B4DZr4z1B9GwAg-/0/1765110932319?e=1774483200&v=beta&t=kfbgGyoPquwXygrYf0wrgOBTe-Mu4JydRJcYd3WKm4g" type="image/jpeg">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Tyler Nicholas</title>
+<meta name="description" content="Tyler Nicholas — Victoria, Seychelles." />
+<link rel="icon" href="https://i.ibb.co/cczjjKjc/Tyler-Nicholas-OFFICE-OF-TYLER-NICHOLAS.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#12263F;
+    --blue:#2E7DD1;
+    --blue-600:#2468B4;
+    --blue-700:#1E568F;
+    --sky:#8FC4F0;
+    --sky-50:#EDF5FD;
+    --sky-100:#DCEBFB;
+    --paper:#F2F8FE;
+    --surface:#FFFFFF;
+    --muted:#5E7089;
+    --line:#DBEAF8;
+    --shadow-sm:0 1px 2px rgba(30,86,143,.05),0 10px 26px -14px rgba(30,86,143,.28);
+    --shadow-md:0 24px 60px -28px rgba(30,86,143,.45);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body.loading{overflow:hidden;height:100vh}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:0;background:none}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
 
-    <style>
-        /* Base Styles & Premium Light Theme Colors */
-        :root {
-            --bg-white: #ffffff;
-            --bg-off-white: #f8fbfc;
-            --campaign-blue: #00AEEF;
-            --black: #111111;
-            --text-dark: #333333;
-            --text-subtitle: #666666;
-        }
+  /* ---------- preloader ---------- */
+  #preloader{
+    position:fixed;inset:0;z-index:1000;
+    background:linear-gradient(160deg,#EAF4FE 0%,#DCEBFB 55%,#CFE4F8 100%);
+    display:grid;place-items:center;
+    transition:opacity .6s ease,visibility .6s;
+  }
+  #preloader.hide{opacity:0;visibility:hidden}
+  .pl-inner{display:flex;flex-direction:column;align-items:center;gap:22px}
+  .pl-ring{
+    width:46px;height:46px;border-radius:50%;
+    border:3px solid rgba(46,125,209,.2);border-top-color:var(--blue);
+    animation:plSpin .9s linear infinite;
+  }
+  @keyframes plSpin{to{transform:rotate(360deg)}}
+  .pl-name{
+    font-weight:800;color:var(--blue-700);font-size:1.15rem;letter-spacing:.2px;
+    animation:plFade 1.8s ease-in-out infinite;
+  }
+  @keyframes plFade{0%,100%{opacity:.55}50%{opacity:1}}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    padding:clamp(40px,8vh,80px) 20px clamp(48px,8vh,72px);
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background-image:url("https://images.locationscout.net/2019/09/sunset-beau-vallon-beach-seychelles-seychelles.webp?h=1400&q=80");
+    background-size:cover;background-position:center 62%;
+    transform:scale(1.04);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,
+      rgba(237,245,253,.80) 0%,
+      rgba(220,235,251,.82) 48%,
+      rgba(242,248,254,.94) 100%);
+  }
+  .hero-inner{position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:center}
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--bg-off-white);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  .brand{
+    font-weight:800;letter-spacing:-.02em;color:var(--blue-700);
+    font-size:clamp(2.1rem,8vw,3.4rem);line-height:1.05;
+    opacity:0;animation:rise .8s .1s forwards;
+  }
+  .brand-rule{
+    width:52px;height:3px;border-radius:3px;background:var(--blue);
+    margin:18px 0 8px;opacity:0;animation:rise .8s .2s forwards;
+  }
+  .brand-sub{
+    color:var(--muted);font-size:.82rem;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;opacity:0;animation:rise .8s .28s forwards;
+  }
 
-        h2, h3, .dot-text, .btn-primary, .btn-secondary, .campaign-banner {
-            font-family: 'Montserrat', sans-serif;
-        }
+  /* login */
+  .portal{
+    margin-top:clamp(30px,5vh,44px);
+    width:100%;max-width:400px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-md);
+    padding:30px 26px 26px;
+    text-align:left;
+    opacity:0;animation:rise .9s .38s forwards;
+  }
+  .portal h2{
+    font-size:1.28rem;font-weight:800;color:var(--ink);
+    display:flex;align-items:center;gap:10px;
+  }
+  .portal h2 svg{width:18px;height:18px;color:var(--blue);flex:none}
+  .portal .hint{color:var(--muted);font-size:.92rem;margin:6px 0 20px}
+  .field{margin-bottom:14px}
+  .field label{
+    display:block;font-size:.78rem;font-weight:700;color:var(--blue-700);
+    margin-bottom:7px;letter-spacing:.02em;
+  }
+  .field input{
+    width:100%;padding:14px 15px;font-size:16px; /* 16px stops iOS zoom */
+    font-family:inherit;color:var(--ink);
+    border:1px solid var(--line);border-radius:11px;background:#FBFDFF;
+    transition:border-color .18s,box-shadow .18s;
+  }
+  .field input:focus{
+    outline:none;border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(46,125,209,.15);
+  }
+  .btn{
+    width:100%;margin-top:6px;padding:15px 16px;border-radius:11px;
+    background:var(--blue);color:#fff;font-weight:700;font-size:1rem;letter-spacing:.2px;
+    box-shadow:0 10px 22px -10px rgba(46,125,209,.6);
+    transition:background .18s,transform .08s;
+    min-height:50px;
+  }
+  .btn:hover{background:var(--blue-600)}
+  .btn:active{transform:translateY(1px)}
+  .btn:disabled{opacity:.65;cursor:not-allowed}
+  .portal .foot{
+    margin-top:16px;text-align:center;font-size:.72rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  }
+  .msg{font-size:.9rem;margin-top:13px;padding:11px 13px;border-radius:10px;display:none}
+  .msg.error{display:block;background:rgba(196,64,64,.08);color:#9a2f2f;border:1px solid rgba(196,64,64,.22)}
+  .msg.ok{display:block;background:rgba(46,125,209,.09);color:var(--blue-700);border:1px solid rgba(46,125,209,.22)}
+  .continue-row{display:none;margin-top:13px}
+  .continue-row.show{display:block}
+  .link-btn{
+    width:100%;padding:14px 16px;border-radius:11px;min-height:50px;
+    border:1.5px solid var(--blue);background:transparent;color:var(--blue-700);
+    font-weight:700;font-size:1rem;text-align:center;transition:background .18s;
+  }
+  .link-btn:hover{background:rgba(46,125,209,.07)}
 
-        /* Campaign Banner */
-        .campaign-banner {
-            background-color: var(--black);
-            color: var(--bg-white);
-            text-align: center;
-            padding: 0.8rem 5%;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
+  /* ---------- ventures ---------- */
+  .ventures{
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    padding:clamp(46px,8vh,72px) 20px;
+  }
+  .v-wrap{max-width:960px;margin:0 auto}
+  .v-eyebrow{
+    text-align:center;color:var(--blue);font-weight:700;font-size:.72rem;
+    letter-spacing:.18em;text-transform:uppercase;margin-bottom:26px;
+  }
+  .grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  }
+  .vcard{
+    background:var(--sky-50);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 18px;
+    display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;
+    transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;
+  }
+  .vcard:hover,.vcard:focus-visible{
+    transform:translateY(-4px);box-shadow:var(--shadow-md);
+    border-color:var(--sky);background:#fff;outline:none;
+  }
+  .vlogo{
+    width:64px;height:64px;border-radius:14px;background:#fff;
+    display:grid;place-items:center;overflow:hidden;flex:none;
+    box-shadow:0 6px 16px -10px rgba(30,86,143,.4);
+  }
+  .vlogo img{width:100%;height:100%;object-fit:contain;padding:7px}
+  .vcard h3{font-size:.98rem;font-weight:700;color:var(--ink);line-height:1.25}
 
-        .campaign-banner a {
-            color: var(--campaign-blue);
-            text-decoration: none;
-            margin-left: 10px;
-        }
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--paper);
+    padding:26px 20px;
+    text-align:center;
+    font-size:.85rem;color:var(--muted);font-weight:600;
+    border-top:1px solid var(--line);
+  }
 
-        .campaign-banner a:hover {
-            text-decoration: underline;
-        }
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-        /* Navigation Bar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            background-color: var(--bg-white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            position: relative;
-            z-index: 100;
-        }
-
-        .logo .dot-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--black);
-        }
-
-        .check {
-            color: var(--campaign-blue);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--campaign-blue);
-        }
-
-        /* Hamburger Menu Icon (Hidden on Desktop) */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--black);
-            cursor: pointer;
-            z-index: 101;
-        }
-
-        /* Base Button Styles */
-        .btn-primary, .btn-secondary {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background-color: var(--campaign-blue);
-            color: var(--bg-white);
-            border: 2px solid var(--campaign-blue);
-        }
-
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--campaign-blue);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--campaign-blue);
-            border: 2px solid var(--campaign-blue);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--campaign-blue);
-            color: var(--bg-white);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            padding: 4rem 5%;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero-text {
-            flex: 1;
-            padding-right: 2rem;
-        }
-
-        .hero-text h2 {
-            font-size: 3.8rem;
-            line-height: 1.1;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: var(--black);
-        }
-
-        .text-blue {
-            color: var(--campaign-blue);
-        }
-
-        .hero-text h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-subtitle);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--text-subtitle);
-            margin-bottom: 2.5rem;
-            max-width: 550px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Social Directory Grid */
-        .hero-social-grid {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-circle {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--bg-white);
-            border: 2px solid rgba(0, 174, 239, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--campaign-blue);
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-circle:hover {
-            background-color: var(--campaign-blue);
-            color: var(--bg-white);
-            border-color: var(--campaign-blue);
-            transform: translateY(-3px);
-        }
-
-        /* Hero Image & Backdrop Fix */
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            position: relative;
-        }
-
-        .image-backdrop {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background-color: var(--campaign-blue);
-            border-radius: 50%;
-            opacity: 0.05;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-
-        .candidate-photo {
-            max-width: 100%;
-            height: auto;
-            max-height: 600px;
-            object-fit: contain;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.15));
-        }
-
-        /* Clean Professional Footer */
-        .site-footer {
-            padding: 3rem 5%;
-            background-color: var(--bg-white);
-            border-top: 1px solid #eaeaea;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .footer-emails {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-emails a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .footer-emails a:hover {
-            color: var(--campaign-blue);
-        }
-
-        .site-footer p {
-            color: #999;
-            font-size: 0.85rem;
-        }
-
-        /* --- MOBILE RESPONSIVENESS & MENU FIX --- */
-        @media (max-width: 1024px) {
-            .menu-toggle {
-                display: block; /* Shows hamburger icon */
-            }
-            .nav-cta {
-                display: none;
-            }
-            
-            /* The Fixed Mobile Menu */
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-white);
-                flex-direction: column;
-                padding: 2rem 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-                transform: translateY(-150%); /* Hides it off-screen */
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.3s ease-in-out;
-            }
-
-            .nav-links.active {
-                transform: translateY(0); /* Slides down */
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                margin-top: 2rem;
-            }
-            .hero-text {
-                padding-right: 0;
-            }
-            .hero-text h2 {
-                font-size: 3rem;
-            }
-            .hero-text p {
-                margin: 0 auto 2.5rem auto;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .hero-social-grid {
-                justify-content: center;
-                margin-bottom: 3rem;
-            }
-            .image-backdrop {
-                width: 300px;
-                height: 300px;
-            }
-            .footer-emails {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-        }
-    </style>
+  /* ---------- mobile ---------- */
+  @media (max-width:760px){
+    .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  }
+  @media (max-width:400px){
+    .portal{padding:26px 20px 22px}
+    .vcard{padding:20px 12px}
+    .vlogo{width:56px;height:56px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .brand,.brand-rule,.brand-sub,.portal{opacity:1}
+    .hero-bg{transform:none}
+  }
+</style>
 </head>
-<body>
+<body class="loading">
 
-    <div class="campaign-banner">
-        <p>🗳️ I am running for the 21st Cohort of the Seychelles National Youth Assembly! <a href="https://vote.tyler-nicholas.online" target="_blank">Visit my campaign website &rarr;</a></p>
+  <div id="preloader" role="status" aria-label="Loading">
+    <div class="pl-inner">
+      <div class="pl-ring"></div>
+      <div class="pl-name">Tyler Nicholas</div>
     </div>
+  </div>
 
-    <nav class="navbar">
-        <div class="logo">
-            <a href="/" style="text-decoration: none;"><span class="dot-text">Tyler<span class="check">.</span></span></a>
+  <main class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <h1 class="brand">Tyler Nicholas</h1>
+      <div class="brand-rule"></div>
+      <div class="brand-sub">Seychelles</div>
+
+      <section class="portal" aria-label="Portal access">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Portal access
+        </h2>
+        <p class="hint">Sign in to continue.</p>
+
+        <form id="loginForm" autocomplete="on">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" required autocomplete="username" inputmode="email" placeholder="name@example.com" />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password" required autocomplete="current-password" placeholder="••••••••" />
+          </div>
+          <button class="btn" id="signInBtn" type="submit">Sign in</button>
+        </form>
+
+        <div class="continue-row" id="continueRow">
+          <button class="link-btn" id="continueBtn">Continue →</button>
         </div>
-        
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-        
-        <ul class="nav-links" id="nav-links">
-            <li><a href="/" class="active">Home</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/projects/">Projects</a></li>
-            <li><a href="/experience/">Experience</a></li>
-            <li><a href="/contact/">Contact</a></li>
-        </ul>
 
-        <div class="nav-cta">
-            <a href="mailto:tyler@tylernicholasgroup.com" class="btn-primary">Let's Talk</a>
-        </div>
-    </nav>
+        <div class="msg" id="msg"></div>
+        <p class="foot">Authorized access only</p>
+      </section>
+    </div>
+  </main>
 
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h2>Hi, I'm <span class="text-blue">Tyler Nicholas</span></h2>
-                <h3>Student, Entrepreneur & Youth Ambassador</h3>
-                
-                <p>
-                    I am a 17-year-old Seychellois leader based on the west side of Mahé. Currently in Première at École Française des Seychelles preparing for the French Baccalaureate (BAC Français & Maths).
-                    <br><br>
-                    From driving business development through the Tyler Nicholas Group to serving my community as a Youth Ambassador, I am focused on building scalable solutions while pursuing my determination to become a commercial pilot.
-                </p>
+  <section class="ventures">
+    <div class="v-wrap">
+      <div class="v-eyebrow">Directory</div>
+      <div class="grid">
+        <a class="vcard" href="https://nicholasoffice.online" target="_blank" rel="noopener">
+          <div class="vlogo"><img src="https://www.flagsonline.it/uploads/2016-6-6/1200-0/seychelles.jpg" alt="Office of Tyler Nicholas" /></div>
+          <h3>Office of Tyler Nicholas</h3>
+        </a>
+        <a class="vcard" href="https://tylernicholasgroup.com" target="_blank" rel="noopener">
+          <div class="vlogo"><img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="Tyler Nicholas Group" /></div>
+          <h3>Tyler Nicholas Group</h3>
+        </a>
+        <a class="vcard" href="https://tyler-nicholas-foundation.online" target="_blank" rel="noopener">
+          <div class="vlogo"><img src="https://i.ibb.co/DgTcFQhD/non-profit-logo-Made-with-Poster-My-Wall.jpg" alt="Tyler Nicholas Foundation" /></div>
+          <h3>Tyler Nicholas Foundation</h3>
+        </a>
+        <a class="vcard" href="https://foodshare-seychelles.online" target="_blank" rel="noopener">
+          <div class="vlogo"><img src="https://i.ibb.co/zHX6bbXb/Food-Share-Seychelles-Logo.png" alt="FoodShare Seychelles" /></div>
+          <h3>FoodShare Seychelles</h3>
+        </a>
+      </div>
+    </div>
+  </section>
 
-                <div class="hero-buttons">
-                    <a href="/about/" class="btn-primary">Learn More</a>
-                    <a href="/projects/" class="btn-secondary">My Ventures</a>
-                </div>
+  <footer>
+    © 2026 Tyler Nicholas. All rights reserved.
+  </footer>
 
-                <div class="hero-social-grid">
-                    <a href="https://www.linkedin.com/in/tyler-nicholas-62999534a" target="_blank" class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/t.nicholas26" target="_blank" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://x.com/TylerNicholasSC" target="_blank" class="social-circle"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://wa.me/qr/HVGZ3S2BPARJL1" target="_blank" class="social-circle"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://www.snapchat.com/add/t.nicholas2008" target="_blank" class="social-circle"><i class="fa-brands fa-snapchat"></i></a>
-                </div>
-            </div>
-            
-            <div class="hero-image">
-                <div class="image-backdrop"></div>
-                <img src="https://i.ibb.co/6RxRwdQJ/IMG-20260227-WA0014-removebg-preview.png" alt="Tyler Nicholas Seated" class="candidate-photo">
-            </div>
-        </div>
-    </header>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // ---------- preloader ----------
+    function hidePreloader(){
+      const p=document.getElementById("preloader");
+      if(!p||p.classList.contains("hide"))return;
+      p.classList.add("hide");
+      document.body.classList.remove("loading");
+      setTimeout(()=>p.remove(),650);
+    }
+    window.addEventListener("load",()=>setTimeout(hidePreloader,500));
+    setTimeout(hidePreloader,6000); // safety
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-emails">
-                <a href="mailto:tyler@tylernicholasgroup.com"><i class="fa-solid fa-envelope"></i> tyler@tylernicholasgroup.com</a>
-                <a href="mailto:tyler.nicholasefs@gmail.com"><i class="fa-solid fa-graduation-cap"></i> tyler.nicholasefs@gmail.com</a>
-            </div>
-            <p>&copy; 2026 Tyler Nicholas. All Rights Reserved.</p>
-        </div>
-    </footer>
+    // ---------- supabase ----------
+    const SUPABASE_URL  = "https://lanrakgrrbyfhtzcxnof.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhbnJha2dycmJ5Zmh0emN4bm9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2NzQwMTQsImV4cCI6MjEwMTI1MDAxNH0.gHaVFXo5vRjcOTlwHRaNNOP1WXqL_4h3ieWg6xnz3hY";
+    const DIARY_PATH    = "/iloveyousomucholivia";
 
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        const icon = mobileMenu.querySelector('i');
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-        mobileMenu.addEventListener('click', () => {
-            // Toggles the drop down menu
-            navLinks.classList.toggle('active');
-            
-            // Switches the hamburger icon to an X when open
-            if(navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        });
-    </script>
+    const form=document.getElementById("loginForm");
+    const btn=document.getElementById("signInBtn");
+    const msg=document.getElementById("msg");
+    const continueRow=document.getElementById("continueRow");
+    const continueBtn=document.getElementById("continueBtn");
+
+    const show=(t,x)=>{msg.className="msg "+t;msg.textContent=x;};
+    const clear=()=>{msg.className="msg";msg.textContent="";};
+
+    (async()=>{
+      try{
+        const {data:{session}}=await sb.auth.getSession();
+        if(session)continueRow.classList.add("show");
+      }catch(e){}
+    })();
+
+    continueBtn.addEventListener("click",()=>{window.location.href=DIARY_PATH;});
+
+    form.addEventListener("submit",async(e)=>{
+      e.preventDefault();clear();
+      btn.disabled=true;btn.textContent="Signing in…";
+      const email=document.getElementById("email").value.trim();
+      const password=document.getElementById("password").value;
+      try{
+        const {error}=await sb.auth.signInWithPassword({email,password});
+        if(error){
+          show("error","We couldn't sign you in. Check your email and password.");
+          btn.disabled=false;btn.textContent="Sign in";return;
+        }
+        show("ok","Welcome back. Taking you in…");
+        window.location.href=DIARY_PATH;
+      }catch(err){
+        show("error","Something went wrong. Please try again.");
+        btn.disabled=false;btn.textContent="Sign in";
+      }
+    });
+  </script>
 </body>
 </html>
